@@ -1,0 +1,5 @@
+<%= form_with model: @user, local: true do |f|%>
+    <%= f.text_field :name, required: true, placeholder:"username"%>
+    <%= f.password_field :password, required: true, placeholder:"password"%>
+    <%= f.submit%>
+<%end%>

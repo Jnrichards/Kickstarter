@@ -1,0 +1,5 @@
+<%= form_with model: @projects, local: true do |f|%>
+    <%= f.text_field :title, required: true, placeholder:"project title"%>
+    <%= f.text_field :goala, required: true, placeholder:"enter a goal"%>
+    <%= f.submit%>
+<%end%>
