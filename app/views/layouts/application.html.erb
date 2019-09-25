@@ -7,9 +7,70 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+<!-- Icons -->
+<link href="/assets/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+<link href="/assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+<!-- Theme CSS -->
+<link type="text/css" href="/assets/css/argon.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
   </head>
 
+
   <body>
+  <% if current_user%>
+      <nav class="flex justify-between bb b--white-10 bg-near-black">
+    <a class="link white-70 hover-white no-underline flex items-center pa3" href="">
+    <svg
+        class="dib h1 w1"
+        data-icon="grid"
+        viewBox="0 0 32 32"
+        style="fill:currentcolor">
+        <title>Super Normal Icon Mark</title>
+        <path d="M2 2 L10 2 L10 10 L2 10z M12 2 L20 2 L20 10 L12 10z M22 2 L30 2 L30 10 L22 10z M2 12 L10 12 L10 20 L2 20z M12 12 L20 12 L20 20 L12 20z M22 12 L30 12 L30 20 L22 20z M2 22 L10 22 L10 30 L2 30z M12 22 L20 22 L20 30 L12 30z M22 22 L30 22 L30 30 L22 30z">
+        </path>
+      </svg>
+    </a>
+    <div class="flex-grow pa3 flex items-center">
+      <a class="f6 link dib white dim mr3 mr4-ns" href="#0"><%= link_to "Home", user_path(current_user)%></a>
+      <a class="f6 link dib white dim mr3 mr4-ns" href="#0"><%= link_to "All Projects", projects_path%></a>
+      <a class="f6 link dib white dim mr3 mr4-ns" href="#0"><%= link_to "Create new Project", new_user_project_url(current_user) %></a>
+      <a class="f6 link dib white dim mr3 mr4-ns" href="#0"><%= link_to "Logout", logout_path%></a>
+    </div>
+  </nav>
+  
+  <%else%>
+    <nav class="flex justify-between bb b--white-10 bg-near-black">
+    <a class="link white-70 hover-white no-underline flex items-center pa3" href="">
+    <svg
+          class="dib h1 w1"
+        data-icon="grid"
+        viewBox="0 0 32 32"
+        style="fill:currentcolor">
+        <title>Super Normal Icon Mark</title>
+        <path d="M2 2 L10 2 L10 10 L2 10z M12 2 L20 2 L20 10 L12 10z M22 2 L30 2 L30 10 L22 10z M2 12 L10 12 L10 20 L2 20z M12 12 L20 12 L20 20 L12 20z M22 12 L30 12 L30 20 L22 20z M2 22 L10 22 L10 30 L2 30z M12 22 L20 22 L20 30 L12 30z M22 22 L30 22 L30 30 L22 30z">
+        </path>
+      </svg>
+    </a>
+    <div class="flex-grow pa3 flex items-center">
+      <a class="f6 link dib white dim mr3 mr4-ns" href="#0"><%= link_to "Login", login_path%></a>
+      <a class="f6 link dib white dim mr3 mr4-ns" href="#0"><%= link_to "Signup", signup_path%></a>
+       <a class="f6 link dib white dim mr3 mr4-ns" href="#0"><%= link_to "Projects", projects_path(@project)%></a>
+    </div>
+    </nav>
+    
+  <%end%>
     <%= yield %>
+
+    <!-- Core -->
+<script src="/assets/vendor/jquery/jquery.min.js"></script>
+<script src="/assets/vendor/popper/popper.min.js"></script>
+<script src="/assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+<!-- Theme JS -->
+<script src="/assets/js/argon.min.js"></script>
   </body>
 </html>

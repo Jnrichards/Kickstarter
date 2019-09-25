@@ -1,2 +1,13 @@
-<h1>Projects#show</h1>
-<p>Find me in app/views/projects/show.html.erb</p>
+<h1><%=@project.title%></h1>
+<h3><%=@project.goal%></h3>
+
+<%= form_with model: [@user, @project, @project.pledges.build], local: true do |pledge|%>
+    <%= pledge.text_field :amount, required: true, placeholder:"Pledge amount"%>
+    <%= pledge.submit%>
+<%end%>
+
+<%= @project.pledges.reduce(0){|t,p| t+=p.amount.to_i}%>
+
+
+
+    

@@ -1,22 +1,34 @@
 class ProjectsController < ApplicationController
   def new
-    @user = User.find(params[:user])
+    @user = User.find(params[:user_id])
+    
   end
 
+
   def index
+    @projects = Project.all
   end
 
   def create
-    @user = User.find(params[:user])
-    session[:user_id] = @user.id
-    @user.project.create(projects_params)
+    @user = User.find(params[:user_id])
+    @user.projects.create(projects_params)
     redirect_to user_path(@user)
   end
 
   def show
+    @user = User.find(params[:user_id])
+    @project = Project.find(params[:id])
+  end
+
+  def user_show
+    @user = User.find(params[:user_id])
+    @project = Project.find(params[:id])
   end
 
   def destroy
+    @user = User.find(params[:user_id])
+    Project.destroy(params[:id])
+    redirect_to user_path(@user)
   end
 
   private

@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root "sessions#new"
-
+  resources :projects, only: [:index, :show]
+  
   resources :users do
-    resources :projects
+    resources :projects do
+      resources :pledges
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

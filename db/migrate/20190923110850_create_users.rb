@@ -6,9 +6,4 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.timestamps
     end
   end
-
-  def down
-    remove_columns :users do |t|
-      t.string :password
-  end
 end

@@ -1,5 +1,5 @@
-<%= form_with model: @projects, local: true do |f|%>
+<%= form_with model: [@user, @user.projects.build], local: true do |f|%>
     <%= f.text_field :title, required: true, placeholder:"project title"%>
-    <%= f.text_field :goala, required: true, placeholder:"enter a goal"%>
-    <%= f.submit%>
+    <%= f.text_field :goal, required: true, placeholder:"enter a goal"%>
+    <%= f.submit "Kickstart project"%>
 <%end%>
